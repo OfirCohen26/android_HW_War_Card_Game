@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addClickListeners() {
-
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

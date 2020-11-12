@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3F5773"
+    android:orientation="horizontal"
+    android:weightSum="7"
     tools:context=".MainActivity">
+
+
 
     <LinearLayout
         android:id="@+id/main_LAY_firstPlayer"
@@ -13,6 +17,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -23,27 +28,21 @@
             android:layout_marginTop="50dp"
             android:background="#3F5773"
             android:padding="8dp"
-            android:text="0"
+            android:text="@string/result_first_player"
             android:textColor="@color/black"
             android:textSize="60sp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:maxWidth="130dp"
-            android:maxHeight="130dp"
-            android:scaleType="fitCenter"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/user_boy" />
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/main_LAY_gameBord"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-
-        android:layout_toLeftOf="@+id/main_LAY_secondPlayer"
-        android:layout_toRightOf="@+id/main_LAY_firstPlayer">
+        android:layout_weight="5"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/main_LAY_cards_container"
@@ -59,7 +58,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/diamond_red_5"></ImageView>
+                android:src="@drawable/diamond_red_5"/>
 
             <ImageView
                 android:id="@+id/main_IMG_VIEW_player2_card"
@@ -67,7 +66,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/diamond_red_5"></ImageView>
+                android:src="@drawable/diamond_red_5"/>
 
 
         </LinearLayout>
@@ -98,10 +97,9 @@
         android:id="@+id/main_LAY_secondPlayer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
 
@@ -128,4 +126,4 @@
             android:src="@drawable/user_girl" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
