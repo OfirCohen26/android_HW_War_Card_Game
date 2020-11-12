@@ -11,8 +11,9 @@
         android:theme="@style/Theme.MyApplication1Hw">
         <activity android:name=".Game_Over_Screen" android:screenOrientation="landscape"></activity>
         <activity
+            android:screenOrientation="landscape"
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
