@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3F5773"
-    android:orientation="horizontal"
-    android:weightSum="7"
     tools:context=".MainActivity">
-
-
 
     <LinearLayout
         android:id="@+id/main_LAY_firstPlayer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -28,80 +22,64 @@
             android:layout_marginTop="50dp"
             android:background="#3F5773"
             android:padding="8dp"
-            android:text="@string/result_first_player"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="60sp" />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:adjustViewBounds="true"
             android:src="@drawable/user_boy" />
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/main_LAY_gameBord"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_weight="5"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/main_LAY_cards_container"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/main_IMG_VIEW_player1_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
                 android:src="@drawable/diamond_red_5"/>
 
             <ImageView
                 android:id="@+id/main_IMG_VIEW_player2_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
                 android:src="@drawable/diamond_red_5"/>
-
-
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/main_LAY_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_LAY_cards_container"
-            android:gravity="center_horizontal">
-
-
-            <ImageButton
-                android:id="@+id/main_BTN_startGame"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginBottom="20dp"
-                android:maxWidth="80dp"
-                android:maxHeight="80dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/video_player" />
-        </LinearLayout>
-
-
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/main_BTN_startGame"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:maxWidth="80dp"
+            android:maxHeight="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/video_player" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/main_LAY_secondPlayer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="2dp"
-        android:layout_weight="1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/main_player2_LBL_result"
@@ -113,17 +91,16 @@
             android:padding="8dp"
             android:text="0"
             android:textColor="@color/black"
-            android:textSize="60dp" />
-
+            android:textSize="60sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:maxWidth="130dp"
-            android:maxHeight="130dp"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
             android:scaleType="fitCenter"
             android:src="@drawable/user_girl" />
     </LinearLayout>
+</RelativeLayout>
 
-</LinearLayout>
