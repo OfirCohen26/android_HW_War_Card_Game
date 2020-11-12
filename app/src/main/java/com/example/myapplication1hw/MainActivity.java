@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout main_LAY_cards_container;
     private ImageView main_IMG_VIEW_player1_card;
     private ImageView main_IMG_VIEW_player2_card;
-    private ImageView [] cards = new ImageView[2];
-    private Card [] cardsInfo = new Card[2];
+    private ImageView[] cards = new ImageView[2];
+    private Card[] cardsInfo = new Card[2];
     private int player1Result = 0;
-    private int player2Result  = 0;
+    private int player2Result = 0;
     private int numOfRounds = 0;
 
 
@@ -58,18 +58,18 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               raffleCards();
-               checkRoundWinnerCard();
-               numOfRounds++;
+                raffleCards();
+                checkRoundWinnerCard();
+                numOfRounds++;
             }
         });
     }
 
     private void checkRoundWinnerCard() {
         //Check who win according to the value
-        if(cardsInfo[0].getValue() > cardsInfo[1].getValue()){
+        if (cardsInfo[0].getValue() > cardsInfo[1].getValue()) {
             player1Result++;
-        } else{
+        } else {
             player2Result++;
         }
         main_player1_LBL_result.setText(player1Result);
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void raffleCards() {
         Random random = new Random();
-        for(int i = 0; i < 2; i++){
+        for (int i = 0; i < 2; i++) {
             //Raffle random number, color and shape
             Card card = new Card(random);
             cardsInfo[i] = card;
             //Set the image of the cards to the raffled values
-            int cardImage = getResources().getIdentifier(card.getShape() + "_" + card.getColor() + "_" + card.getValue(),TYPE,FOLDER);
+            int cardImage = getResources().getIdentifier(card.getShape() + "_" + card.getColor() + "_" + card.getValue(), TYPE, FOLDER);
             cards[i].setImageResource(cardImage);
         }
     }
