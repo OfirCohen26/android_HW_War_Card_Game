@@ -12,7 +12,7 @@ public class Card {
     private static Color[] colors = {Color.BLACK, Color.RED};
     private static Shape[] shapes = {Shape.DIAMOND, Shape.HEART, Shape.CLUBS, Shape.LEAF};
     final int min = 1;
-    final int max = 52;
+    final int max = 13;
     private int value;
     private String color;
     private String shape;
