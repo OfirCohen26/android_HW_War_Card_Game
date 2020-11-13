@@ -52,13 +52,13 @@
                 android:id="@+id/main_IMG_VIEW_player1_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/diamond_red_5"/>
+                android:src="@drawable/inverted_card"/>
 
             <ImageView
                 android:id="@+id/main_IMG_VIEW_player2_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/diamond_red_5"/>
+                android:src="@drawable/inverted_card"/>
         </LinearLayout>
 
         <ImageView

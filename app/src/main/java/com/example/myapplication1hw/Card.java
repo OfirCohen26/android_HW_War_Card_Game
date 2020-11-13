@@ -17,6 +17,9 @@ public class Card {
     }
 
     public Card(int value, String color, String shape) {
+        this.setShape(shape);
+        this.setColor(color);
+        this.setValue(value);
     }
 
     public int getValue() {

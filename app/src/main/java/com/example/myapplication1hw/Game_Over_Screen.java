@@ -3,12 +3,15 @@ package com.example.myapplication1hw;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class Game_Over_Screen extends AppCompatActivity {
 
     //Setting variables
-    private int winnerScore;
+    private String winner;
     public static final String EXTRA_KEY_WINNER = "EXTRA_KEY_WINNER";
+    private TextView main_LBL_theWinner;
+
 
 
     @Override
@@ -18,11 +21,13 @@ public class Game_Over_Screen extends AppCompatActivity {
         findViews();
 
         // get the Player that Won
-        int winnerScore = getIntent().getIntExtra(EXTRA_KEY_WINNER, -1);
-//        calculator_LBL_result.setText("" + previousCount);
+       winner = getIntent().getStringExtra(EXTRA_KEY_WINNER);
+       if (winner.equals("Draw"))
+           main_LBL_theWinner.setText(winner);
+        main_LBL_theWinner.setText("The Winner is " + winner);
     }
 
     private void findViews() {
-
+        main_LBL_theWinner = findViewById(R.id.main_LBL_theWinner);
     }
 }
