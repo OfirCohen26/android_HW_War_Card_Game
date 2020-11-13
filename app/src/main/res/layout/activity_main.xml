@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F5773"
+    android:background="#3D4673"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:background="#3F5773"
+            android:background="#3D4673"
             android:padding="8dp"
-            android:text="0"
+            android:text="@string/result_first_player"
             android:textColor="@color/black"
             android:textSize="60sp" />
 
@@ -87,9 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:background="#3F5773"
+            android:background="#3D4673"
             android:padding="8dp"
-            android:text="0"
+            android:text="@string/result_second_player"
             android:textColor="@color/black"
             android:textSize="60sp" />
 

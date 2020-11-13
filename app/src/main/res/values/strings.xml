@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Application1 hw</string>
     <string name="result_first_player">0</string>
+    <string name="result_second_player">0</string>
+    <string name="winner">The Winner is - </string>
+
 </resources>
