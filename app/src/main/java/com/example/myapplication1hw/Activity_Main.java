@@ -41,63 +41,105 @@ public class Activity_Main extends AppCompatActivity {
     private int numOfRounds = 0;
     private int theWinner = 0;
 
-    private Random RANDOM = new Random();
+    private final Random RANDOM = new Random();
 
-    Card firstCard;
-    Card secondCard;
+//    Card firstCard;
+//    Card secondCard;
+    Card card1;
+    Card card2;
+    private final Color[] colors = {Color.BLACK, Color.RED};
+    private final Shape[] shapes = {Shape.DIAMOND, Shape.HEART, Shape.SPADES, Shape.CLUBS};
 
-    private static Color[] colors = {Color.BLACK, Color.RED};
-    private static Shape[] shapes = {Shape.DIAMOND, Shape.HEART, Shape.SPADES, Shape.CLUBS};
-
-    List<Card> cards = new ArrayList<Card>();
-
+    List<Card> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firstCard = new Card();
-        secondCard = new Card();
+//        firstCard = new Card();
+//        secondCard = new Card();
         findViews();
-        createListOfCards();
+//        createListOfCards();
         addClickListeners();
     }
 
-    private void createListOfCards() {
-        for (int i = 1; i <= 12; i++) {
-            cards.add(new Card(i, "RED", "DIAMOND"));
-        }
-    }
+//    private void createListOfCards() {
+//        cards = new ArrayList<Card>();
+//        for (int i = 1; i <= 12; i++) {
+//            Card temp = new Card(i, "RED", "DIAMOND");
+//            cards.add(temp);
+//        }
+//    }
 
     private void addClickListeners() {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (numOfRounds < 6) { // only 26 rounds until the game is over
-                    // ruffle 2 Cards
-                    raffleCardsAndShow();
-//                     check if the cards are different
-                    while (!ifEquals()) {// while the cards are equals ruffle again
-                        raffleCardsAndShow();
-                    }
-//                    // check which player is the Winner Of this round
-//                  invertCards();
-                    checkRoundWinnerCard();
+                    card1 = new Card();
+                    card2= new Card();
+//                    card1 =  raffleRandomValues(card1);
+//                    card2 =  raffleRandomValues(card2);
+                    checkCards(card1,card2);
+                    showCards(card1,card2);
+                    checkRoundWinnerCard(card1,card2);
                     numOfRounds++;
                 } else {
-                    if (player1Score > player2Score)
-                        theWinner = 1; // player 1 won
-                    else if (player1Score < player2Score)
-                        theWinner = 2; // player 2 won
-                    else theWinner = 0; // draw
-                    openGameOverScreen(); // send the Winner
+                    findWinnerOfTheGame();
                 }
             }
         });
     }
 
+    private void checkCards(Card card1, Card card2) {
 
+    }
+
+    private Card CheckCard(Card card){
+        raffleRandomValues(card);
+
+        return null;
+    }
+
+    private void raffleRandomValues(Card card) {
+       int value = RANDOM.nextInt((MAX_NUM_OF_CARD - MIN_NUM_OF_CARD) + 1) + MIN_NUM_OF_CARD;
+       String color = (colors[1].name());
+       String shape =  (shapes[0].name());
+    }
+
+
+
+    // Create random Card
+//    private Card raffleRandomValues(Card card) {
+//        card.setValue(RANDOM.nextInt((MAX_NUM_OF_CARD - MIN_NUM_OF_CARD) + 1) + MIN_NUM_OF_CARD);
+//        card.setColor(colors[1].name());
+//        card.setShape(shapes[0].name());
+//        card.setActive(true);
+//        return card;
+////        card.setColor(colors[RANDOM.nextInt(MAX_NUM_OF_COLOR - MIN_NUM_OF_COLOR) + 1 +MIN_NUM_OF_COLOR].name());
+////        if(card.getColor().equals(Color.RED.name()))
+////            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_RED - MIN_NUM_OF_SHAPE_RED) + 1 + MIN_NUM_OF_SHAPE_RED].name());
+////        else
+////            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_BLACK - MIN_NUM_OF_SHAPE_BLACK) + 1 + MIN_NUM_OF_SHAPE_BLACK].name());
+//        }
+//    private void raffleCardsAndShow() {
+//        raffleRandomValues(firstCard);
+//        Log.d("MYINT", "value: " + firstCard.getValue());
+//        Log.d("pttt2", firstCard.getShape());
+//        Log.d("pttt9", firstCard.getColor());
+//        raffleRandomValues(secondCard);
+//        Log.d("MYINT2", "value: " + secondCard.getValue());
+//        Log.d("pttt3", secondCard.getShape());
+//        Log.d("pttt8", secondCard.getColor());
+//        showCards();
+////
+////        int a = cards.indexOf(firstCard);
+////        Log.d("aray", "" +a);
+//
+//    }
+
+    //Send the Winner to Game_Over_Screen
     private void openGameOverScreen() {
         Intent myIntent = new Intent(Activity_Main.this, Game_Over_Screen.class);
         if (theWinner == 1)
@@ -109,80 +151,36 @@ public class Activity_Main extends AppCompatActivity {
         startActivity(myIntent);
         finish();
     }
-
-    private void invertCards() {
-        int invertCardImage = getResources().getIdentifier("inverted_card", TYPE, FOLDER);
-        main_IMG_VIEW_player1_card.setImageResource(invertCardImage);
-        main_IMG_VIEW_player2_card.setImageResource(invertCardImage);
+    // find the Winner Of The game
+    private void findWinnerOfTheGame(){
+        if (player1Score > player2Score)
+            theWinner = 1; // player 1 won
+        else if (player1Score < player2Score)
+            theWinner = 2; // player 2 won
+        else theWinner = 0; // draw
+        openGameOverScreen(); // send the Winner
     }
-
-
-    private void checkRoundWinnerCard() {
-        //Check who win according to the value
-        if (firstCard.getValue() > secondCard.getValue()) {
+    //Check who win according to the value
+    private void checkRoundWinnerCard(Card card1, Card card2) {
+        if (card1.getValue() > card2.getValue()) {
             player1Score++;
-        } else if (firstCard.getValue() < secondCard.getValue()) {
+        } else if (card1.getValue() < card2.getValue()) {
+            player2Score++;
+        } else{
+            player1Score++;
             player2Score++;
         }
-//        else {
-//            player1Score++;
-//            player2Score++;
-//        }
         main_player1_LBL_result.setText("" + player1Score);
         main_player2_LBL_result.setText("" + player2Score);
     }
-
-    // Create random Card
-    private void raffleRandomValues(Card card) {
-        card.setValue(RANDOM.nextInt((MAX_NUM_OF_CARD - MIN_NUM_OF_CARD) + 1) + MIN_NUM_OF_CARD);
-        card.setColor(colors[1].name());
-        card.setShape(shapes[0].name());
-
-//        card.setColor(colors[RANDOM.nextInt(MAX_NUM_OF_COLOR - MIN_NUM_OF_COLOR) + 1 +MIN_NUM_OF_COLOR].name());
-//        if(card.getColor().equals(Color.RED.name()))
-//            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_RED - MIN_NUM_OF_SHAPE_RED) + 1 + MIN_NUM_OF_SHAPE_RED].name());
-//        else
-//            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_BLACK - MIN_NUM_OF_SHAPE_BLACK) + 1 + MIN_NUM_OF_SHAPE_BLACK].name());
-        }
-    private void raffleCardsAndShow() {
-        raffleRandomValues(firstCard);
-        Log.d("MYINT", "value: " + firstCard.getValue());
-        Log.d("pttt2", firstCard.getShape());
-        Log.d("pttt9", firstCard.getColor());
-        raffleRandomValues(secondCard);
-        Log.d("MYINT2", "value: " + secondCard.getValue());
-        Log.d("pttt3", secondCard.getShape());
-        Log.d("pttt8", secondCard.getColor());
-        showCards();
-//
-//        int a = cards.indexOf(firstCard);
-//        Log.d("aray", "" +a);
-
-    }
-
-    private void showCards() {
-        int firstCardImage = getResources().getIdentifier(firstCard.getShape().toLowerCase() + "_" + firstCard.getColor().toLowerCase() + "_" + firstCard.getValue(), TYPE, FOLDER);
+    // Show selected Cards
+    private void showCards(Card card1, Card card2) {
+        int firstCardImage = getResources().getIdentifier(card1.getShape().toLowerCase() + "_" + card1.getColor().toLowerCase() + "_" + card1.getValue(), TYPE, FOLDER);
         main_IMG_VIEW_player1_card.setImageResource(firstCardImage);
 
-        int secondCardImage = getResources().getIdentifier(secondCard.getShape().toLowerCase() + "_" + secondCard.getColor().toLowerCase() + "_" + secondCard.getValue(), TYPE, FOLDER);
+        int secondCardImage = getResources().getIdentifier(card2.getShape().toLowerCase() + "_" + card2.getColor().toLowerCase() + "_" + card2.getValue(), TYPE, FOLDER);
         main_IMG_VIEW_player2_card.setImageResource(secondCardImage);
     }
-
-
-    // Check if the ruffled cards are equal
-    private boolean ifEquals(){
-        if(firstCard.getValue() != secondCard.getValue()){
-//            ||
-//                !firstCard.getColor().equals(secondCard.getColor() )||
-//               !firstCard.getShape().equals(secondCard.getShape())) {
-            // not the same shape
-            Log.d("not again", "ruffled");
-            return true;
-        }
-        Log.d("again", "ruffled");
-        return false; // the Cards are the not the same - need to ruffle again
-    }
-
     private void findViews() {
         main_player1_LBL_result = findViewById(R.id.main_player1_LBL_result);
         main_player2_LBL_result = findViewById(R.id.main_player2_LBL_result);
@@ -192,37 +190,3 @@ public class Activity_Main extends AppCompatActivity {
         main_IMG_VIEW_player2_card = findViewById(R.id.main_IMG_VIEW_player2_card);
     }
 }
-
-//
-//    @Override
-//    protected void onStart() {
-//        Log.d("pttt", "onStart");
-//        super.onStart();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        Log.d("pttt", "onResume");
-//        super.onResume();
-//
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        Log.d("pttt", "onPause");
-//        super.onPause();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        Log.d("pttt", "onStop");
-//        super.onStop();
-//
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        Log.d("pttt", "onDestroy");
-//        super.onDestroy();
-//    }
-//}
