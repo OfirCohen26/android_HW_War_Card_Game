@@ -23,7 +23,7 @@ public class Game_Over_Screen extends AppCompatActivity {
         // get the Player that Won
        winner = getIntent().getStringExtra(EXTRA_KEY_WINNER);
        if (winner.equals("Draw"))
-             main_LBL_theWinner.setText(winner);
+             main_LBL_theWinner.setText("No Winner it's a "+winner);
        else
         main_LBL_theWinner.setText("The Winner is " + winner);
     }

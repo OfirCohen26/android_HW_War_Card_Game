@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3D4673"
+    android:background="#355A41"
     tools:context=".Activity_Main">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:background="#3D4673"
+            android:background="#355A41"
             android:padding="8dp"
             android:text="@string/result_first_player"
             android:textColor="@color/black"
@@ -49,16 +49,14 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/main_IMG_VIEW_player1_card"
+                android:id="@+id/main_IMG_player1_card"
                 android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/inverted_card"/>
+                android:layout_height="150dp"/>
 
             <ImageView
-                android:id="@+id/main_IMG_VIEW_player2_card"
+                android:id="@+id/main_IMG_player2_card"
                 android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/inverted_card"/>
+                android:layout_height="150dp"/>
         </LinearLayout>
 
         <ImageView
@@ -87,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:background="#3D4673"
+            android:background="#355A41"
             android:padding="8dp"
             android:text="@string/result_second_player"
             android:textColor="@color/black"

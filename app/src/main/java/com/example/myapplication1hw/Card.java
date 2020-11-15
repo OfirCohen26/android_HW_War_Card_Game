@@ -1,13 +1,6 @@
 package com.example.myapplication1hw;
 
-import android.content.Context;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
-
-import java.util.Random;
-
-public class Card implements CardsFunc {
+public class Card  {
 
     private int value;
     private String color;
