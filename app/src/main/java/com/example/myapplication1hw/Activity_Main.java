@@ -3,6 +3,7 @@ package com.example.myapplication1hw;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +21,6 @@ public class Activity_Main extends AppCompatActivity {
     final String FOLDER = "com.example.myapplication1hw";
     final String TYPE = "drawable";
     final int NUMBER_OF_CARDS = 52;
-
     final String INVERTED_CARD = "inverted_card";
 
     private TextView main_player1_LBL_result;
@@ -37,10 +37,17 @@ public class Activity_Main extends AppCompatActivity {
 
     private final Random RANDOM = new Random();
 
-    Card card1;
-    Card card2;
-    private final Color[] colors = {Color.BLACK, Color.RED};
-    private final Shape[] shapes = {Shape.DIAMOND, Shape.HEART, Shape.SPADES, Shape.CLUBS};
+    Card firstCard;
+    Card secondCard;
+//    private final Color[] colors = {Color.BLACK, Color.RED};
+//    private final Shape[] shapes = {Shape.DIAMOND, Shape.HEART, Shape.SPADES, Shape.CLUBS};
+
+    Color red = Color.RED;
+    Color black = Color.BLACK;
+    Shape diamond = Shape.DIAMOND;
+    Shape heart = Shape.HEART;
+    Shape clubs = Shape.CLUBS;
+    Shape spades = Shape.SPADES;
 
     List<Card> cards;
 
@@ -49,14 +56,23 @@ public class Activity_Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+        cards = new ArrayList<Card>();
+
         createListOfCards();
         addClickListeners();
     }
-//
+
+    //
     private void createListOfCards() {
-        cards = new ArrayList<Card>();
-        for (int i = 1; i <= 12; i++) {
-            Card temp = new Card(i, "RED", "DIAMOND");
+        addToCards(cards, red.name(), diamond.name());
+        addToCards(cards, red.name(), heart.name());
+//        addToCards(cards,black.name(),clubs.name());
+//        addToCards(cards,black.name(),spades.name());
+    }
+
+    private void addToCards(List<Card> cards, String color, String shape) {
+        for (int i = 1; i <= 13; i++) {
+            Card temp = new Card(i, color, shape);
             cards.add(temp);
         }
     }
@@ -65,15 +81,22 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (numOfRounds < 6) { // only 26 rounds until the game is over
-                    card1 = new Card();
-                    card2 = new Card();
-                    card1 = cards.get(randomCardNumber(cards.size()));
-                    cards.remove(card1);
-                    card2 = cards.get(randomCardNumber(cards.size()));
-                    cards.remove(card2);
-                    showCards(card1,card2);
-                    checkRoundWinnerCard(card1,card2);
+                if (numOfRounds < 13) { // only 26 rounds until the game is over
+                    firstCard = new Card();
+                    secondCard = new Card();
+                    firstCard = cards.get(randomCardNumber(cards.size()));
+                    cards.remove(firstCard);
+                    secondCard = cards.get(randomCardNumber(cards.size()));
+                    cards.remove(secondCard);
+                    showCards(firstCard, secondCard);
+                    checkRoundWinnerCard(firstCard, secondCard);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            invertCards();
+                        }
+                    }, 10000);
                     numOfRounds++;
                 } else {
                     findWinnerOfTheGame();
@@ -82,7 +105,9 @@ public class Activity_Main extends AppCompatActivity {
         });
     }
 
-    private void invertCards(){
+    private void invertCards() {
+
+
         int CardImage = getResources().getIdentifier(INVERTED_CARD, TYPE, FOLDER);
         main_IMG_VIEW_player1_card.setImageResource(CardImage);
         main_IMG_VIEW_player2_card.setImageResource(CardImage);
@@ -105,8 +130,9 @@ public class Activity_Main extends AppCompatActivity {
         startActivity(myIntent);
         finish();
     }
+
     // find the Winner Of The game
-    private void findWinnerOfTheGame(){
+    private void findWinnerOfTheGame() {
         if (player1Score > player2Score)
             theWinner = 1; // player 1 won
         else if (player1Score < player2Score)
@@ -114,27 +140,31 @@ public class Activity_Main extends AppCompatActivity {
         else theWinner = 0; // draw
         openGameOverScreen(); // send the Winner
     }
+
     //Check who win according to the value
     private void checkRoundWinnerCard(Card card1, Card card2) {
         if (card1.getValue() > card2.getValue()) {
             player1Score++;
         } else if (card1.getValue() < card2.getValue()) {
             player2Score++;
-        } else{
+        } else {
             player1Score++;
             player2Score++;
         }
         main_player1_LBL_result.setText("" + player1Score);
         main_player2_LBL_result.setText("" + player2Score);
     }
+
     // Show selected Cards
-    private void showCards(Card card1, Card card2) {
+    private void showCards(final Card card1, final Card card2) {
+        Log.d("pttt", "hello");
         int firstCardImage = getResources().getIdentifier(card1.getShape().toLowerCase() + "_" + card1.getColor().toLowerCase() + "_" + card1.getValue(), TYPE, FOLDER);
         main_IMG_VIEW_player1_card.setImageResource(firstCardImage);
-
         int secondCardImage = getResources().getIdentifier(card2.getShape().toLowerCase() + "_" + card2.getColor().toLowerCase() + "_" + card2.getValue(), TYPE, FOLDER);
         main_IMG_VIEW_player2_card.setImageResource(secondCardImage);
+
     }
+
     private void findViews() {
         main_player1_LBL_result = findViewById(R.id.main_player1_LBL_result);
         main_player2_LBL_result = findViewById(R.id.main_player2_LBL_result);
