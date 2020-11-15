@@ -19,14 +19,8 @@ public class Activity_Main extends AppCompatActivity {
     //Setting variables
     final String FOLDER = "com.example.myapplication1hw";
     final String TYPE = "drawable";
-    final int MIN_NUM_OF_CARD = 1;
-    final int MAX_NUM_OF_CARD = 12;
-    final int MIN_NUM_OF_COLOR = 0;
-    final int MAX_NUM_OF_COLOR = 1;
-    final int MIN_NUM_OF_SHAPE_RED = 0;
-    final int MAX_NUM_OF_SHAPE_RED = 1;
-    final int MIN_NUM_OF_SHAPE_BLACK = 2;
-    final int MAX_NUM_OF_SHAPE_BLACK = 3;
+    final int NUMBER_OF_CARDS = 52;
+
     final String INVERTED_CARD = "inverted_card";
 
     private TextView main_player1_LBL_result;
@@ -43,8 +37,6 @@ public class Activity_Main extends AppCompatActivity {
 
     private final Random RANDOM = new Random();
 
-//    Card firstCard;
-//    Card secondCard;
     Card card1;
     Card card2;
     private final Color[] colors = {Color.BLACK, Color.RED};
@@ -56,21 +48,18 @@ public class Activity_Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        firstCard = new Card();
-//        secondCard = new Card();
         findViews();
-//        createListOfCards();
+        createListOfCards();
         addClickListeners();
     }
-
-//    private void createListOfCards() {
-//        cards = new ArrayList<Card>();
-//        for (int i = 1; i <= 12; i++) {
-//            Card temp = new Card(i, "RED", "DIAMOND");
-//            cards.add(temp);
-//        }
-//    }
+//
+    private void createListOfCards() {
+        cards = new ArrayList<Card>();
+        for (int i = 1; i <= 12; i++) {
+            Card temp = new Card(i, "RED", "DIAMOND");
+            cards.add(temp);
+        }
+    }
 
     private void addClickListeners() {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +67,11 @@ public class Activity_Main extends AppCompatActivity {
             public void onClick(View view) {
                 if (numOfRounds < 6) { // only 26 rounds until the game is over
                     card1 = new Card();
-                    card2= new Card();
-//                    card1 =  raffleRandomValues(card1);
-//                    card2 =  raffleRandomValues(card2);
-                    checkCards(card1,card2);
+                    card2 = new Card();
+                    card1 = cards.get(randomCardNumber(cards.size()));
+                    cards.remove(card1);
+                    card2 = cards.get(randomCardNumber(cards.size()));
+                    cards.remove(card2);
                     showCards(card1,card2);
                     checkRoundWinnerCard(card1,card2);
                     numOfRounds++;
@@ -92,52 +82,16 @@ public class Activity_Main extends AppCompatActivity {
         });
     }
 
-    private void checkCards(Card card1, Card card2) {
+    private void invertCards(){
+        int CardImage = getResources().getIdentifier(INVERTED_CARD, TYPE, FOLDER);
+        main_IMG_VIEW_player1_card.setImageResource(CardImage);
+        main_IMG_VIEW_player2_card.setImageResource(CardImage);
 
     }
 
-    private Card CheckCard(Card card){
-        raffleRandomValues(card);
-
-        return null;
+    private int randomCardNumber(int num) {
+        return RANDOM.nextInt(num);
     }
-
-    private void raffleRandomValues(Card card) {
-       int value = RANDOM.nextInt((MAX_NUM_OF_CARD - MIN_NUM_OF_CARD) + 1) + MIN_NUM_OF_CARD;
-       String color = (colors[1].name());
-       String shape =  (shapes[0].name());
-    }
-
-
-
-    // Create random Card
-//    private Card raffleRandomValues(Card card) {
-//        card.setValue(RANDOM.nextInt((MAX_NUM_OF_CARD - MIN_NUM_OF_CARD) + 1) + MIN_NUM_OF_CARD);
-//        card.setColor(colors[1].name());
-//        card.setShape(shapes[0].name());
-//        card.setActive(true);
-//        return card;
-////        card.setColor(colors[RANDOM.nextInt(MAX_NUM_OF_COLOR - MIN_NUM_OF_COLOR) + 1 +MIN_NUM_OF_COLOR].name());
-////        if(card.getColor().equals(Color.RED.name()))
-////            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_RED - MIN_NUM_OF_SHAPE_RED) + 1 + MIN_NUM_OF_SHAPE_RED].name());
-////        else
-////            card.setShape(shapes[RANDOM.nextInt(MAX_NUM_OF_SHAPE_BLACK - MIN_NUM_OF_SHAPE_BLACK) + 1 + MIN_NUM_OF_SHAPE_BLACK].name());
-//        }
-//    private void raffleCardsAndShow() {
-//        raffleRandomValues(firstCard);
-//        Log.d("MYINT", "value: " + firstCard.getValue());
-//        Log.d("pttt2", firstCard.getShape());
-//        Log.d("pttt9", firstCard.getColor());
-//        raffleRandomValues(secondCard);
-//        Log.d("MYINT2", "value: " + secondCard.getValue());
-//        Log.d("pttt3", secondCard.getShape());
-//        Log.d("pttt8", secondCard.getColor());
-//        showCards();
-////
-////        int a = cards.indexOf(firstCard);
-////        Log.d("aray", "" +a);
-//
-//    }
 
     //Send the Winner to Game_Over_Screen
     private void openGameOverScreen() {
