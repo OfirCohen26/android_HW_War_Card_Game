@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:background="#355A41"
             android:textColor="#FF0000"
-            android:textSize="50sp"/>
+            android:textSize="50sp" />
 
     </LinearLayout>
 </RelativeLayout>
