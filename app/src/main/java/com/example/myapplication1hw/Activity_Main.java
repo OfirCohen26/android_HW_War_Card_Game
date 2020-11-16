@@ -105,9 +105,14 @@ public class Activity_Main extends AppCompatActivity {
                     showCardsAndFindWinnerOfRound(firstCard, secondCard);
                     numOfRounds++;
 //                } else {
-                if(numOfRounds == NUMBER_OF_CARD_DECK)
-                    findWinnerOfTheGame();
-//                }
+                if(numOfRounds == NUMBER_OF_CARD_DECK){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            findWinnerOfTheGame();
+                        }
+                    }, 1000);
+                }
             }
         });
     }
