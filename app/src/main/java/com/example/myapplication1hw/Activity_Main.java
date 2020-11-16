@@ -21,8 +21,11 @@ public class Activity_Main extends AppCompatActivity {
     //Setting variables
     final String FOLDER = "com.example.myapplication1hw";
     final String TYPE = "drawable";
-    final int NUMBER_OF_CARDS = 52;
+    final int NUMBER_OF_CARD_DECK = 26;
+    final int SUIT_SIZE = 13;
     final String INVERTED_CARD = "inverted_card";
+    private final Random RANDOM = new Random();
+
 
     private TextView main_player1_LBL_result;
     private TextView main_player2_LBL_result;
@@ -35,8 +38,6 @@ public class Activity_Main extends AppCompatActivity {
     private int player2Score = 0;
     private int numOfRounds = 0;
     private int theWinner = 0;
-
-    private final Random RANDOM = new Random();
 
     Card firstCard;
     Card secondCard;
@@ -52,7 +53,6 @@ public class Activity_Main extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +61,6 @@ public class Activity_Main extends AppCompatActivity {
         findViews();
         initImage(R.drawable.inverted_card,main_IMG_player1_card);
         initImage(R.drawable.inverted_card,main_IMG_player2_card);
-
         createListOfCards();
         //Start the game
         addClickListeners();
@@ -84,7 +83,7 @@ public class Activity_Main extends AppCompatActivity {
     }
 
     private void addToCards(List<Card> cards, String color, String shape) {
-        for (int i = 1; i <= 13; i++) {
+        for (int i = 1; i <= SUIT_SIZE; i++) {
             Card temp = new Card(i, color, shape);
             cards.add(temp);
         }
@@ -94,7 +93,7 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (numOfRounds < 13) { // only 26 rounds until the game is over
+                if (numOfRounds < NUMBER_OF_CARD_DECK) { // only 26 rounds until the game is over
                     createSound(R.raw.card_game_sound_effect);
                     firstCard = new Card();
                     secondCard = new Card();
