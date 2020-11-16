@@ -3,5 +3,7 @@
     <string name="result_first_player">0</string>
     <string name="result_second_player">0</string>
     <string name="winner">The Winner is - </string>
+    <string name="newGame">NEW GAME</string>
+
 
 </resources>

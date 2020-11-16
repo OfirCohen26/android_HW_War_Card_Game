@@ -9,7 +9,7 @@
 
     >
     <LinearLayout
-        android:id="@+id/main_LAY_GameOver"
+        android:id="@+id/gameOver_LAY_GameOver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,8 +17,8 @@
         >
 
         <ImageView
-            android:id="@+id/main_IMG_VIEW_player1_card"
-            android:layout_width="match_parent"
+            android:id="@+id/gameOver_IMG_VIEW_player1_card"
+            android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/game_over"
             />
@@ -26,22 +26,57 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/main_LAY_TheWinner"
+        android:id="@+id/gameOver_LAY_NewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:orientation="horizontal"
-        android:layout_below="@id/main_LAY_GameOver"
-        android:gravity="center_horizontal"
+        android:layout_below="@id/gameOver_LAY_GameOver"
+        android:layout_centerHorizontal="true">
 
-        >
+        <LinearLayout
+            android:id="@+id/gameOver_LAY_NewGameWithText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
         <TextView
-            android:id="@+id/main_LBL_theWinner"
+            android:id="@+id/gameOver_LBL_newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#355A41"
+            android:textColor="#FF5722"
+            android:textSize="20sp"
+            android:text="@string/newGame" />
+
+        <ImageView
+            android:id="@+id/gameOver_BTN_newGame"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:maxWidth="40dp"
+            android:maxHeight="40dp"
+            android:src="@drawable/video_player"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gameOver_LAY_TheWinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/gameOver_LAY_NewGame"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/gameOver_LBL_theWinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#355A41"
             android:textColor="#FF0000"
             android:textSize="50sp" />
-
     </LinearLayout>
+
+
 </RelativeLayout>

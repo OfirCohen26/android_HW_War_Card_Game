@@ -79,7 +79,7 @@ public class Activity_Main extends AppCompatActivity {
         addToCards(cards, red.name(), diamond.name());
         addToCards(cards, red.name(), heart.name());
         addToCards(cards, black.name(), clubs.name());
-//        addToCards(cards,black.name(),spades.name());
+        addToCards(cards,black.name(),spades.name());
     }
 
     private void addToCards(List<Card> cards, String color, String shape) {
@@ -93,7 +93,7 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (numOfRounds < NUMBER_OF_CARD_DECK) { // only 26 rounds until the game is over
+//                if (numOfRounds < NUMBER_OF_CARD_DECK) { // only 26 rounds until the game is over
                     createSound(R.raw.card_game_sound_effect);
                     firstCard = new Card();
                     secondCard = new Card();
@@ -104,9 +104,10 @@ public class Activity_Main extends AppCompatActivity {
                     //Show cards results on screen
                     showCardsAndFindWinnerOfRound(firstCard, secondCard);
                     numOfRounds++;
-                } else {
+//                } else {
+                if(numOfRounds == NUMBER_OF_CARD_DECK)
                     findWinnerOfTheGame();
-                }
+//                }
             }
         });
     }
@@ -125,9 +126,9 @@ public class Activity_Main extends AppCompatActivity {
     private void openGameOverScreen() {
         Intent myIntent = new Intent(Activity_Main.this, Game_Over_Screen.class);
         if (theWinner == 1)
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Player1");
+            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Bob");
         else if (theWinner == 2)
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Player2");
+            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "khloe");
         else
             myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Draw");
         startActivity(myIntent);
@@ -173,6 +174,7 @@ public class Activity_Main extends AppCompatActivity {
         }, 1000);
 
     }
+
 
     private void findViews() {
         main_player1_LBL_result = findViewById(R.id.main_player1_LBL_result);
