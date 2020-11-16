@@ -93,7 +93,6 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (numOfRounds < NUMBER_OF_CARD_DECK) { // only 26 rounds until the game is over
                     createSound(R.raw.card_game_sound_effect);
                     firstCard = new Card();
                     secondCard = new Card();
@@ -104,15 +103,14 @@ public class Activity_Main extends AppCompatActivity {
                     //Show cards results on screen
                     showCardsAndFindWinnerOfRound(firstCard, secondCard);
                     numOfRounds++;
-//                } else {
-                if(numOfRounds == NUMBER_OF_CARD_DECK){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            findWinnerOfTheGame();
-                        }
-                    }, 1000);
-                }
+                    if(numOfRounds == NUMBER_OF_CARD_DECK) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                findWinnerOfTheGame();
+                            }
+                        }, 1000);
+                    }
             }
         });
     }

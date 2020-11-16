@@ -63,7 +63,7 @@
 
     <LinearLayout
         android:id="@+id/gameOver_LAY_TheWinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/gameOver_LAY_NewGame"
@@ -71,11 +71,12 @@
 
         <TextView
             android:id="@+id/gameOver_LBL_theWinner"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#355A41"
             android:textColor="#FF0000"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            />
     </LinearLayout>
 
 
