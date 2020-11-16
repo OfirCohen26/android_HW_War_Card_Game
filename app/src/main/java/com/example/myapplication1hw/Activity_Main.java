@@ -79,7 +79,7 @@ public class Activity_Main extends AppCompatActivity {
     private void createListOfCards() {
         addToCards(cards, red.name(), diamond.name());
         addToCards(cards, red.name(), heart.name());
-//        addToCards(cards,black.name(),clubs.name());
+        addToCards(cards, black.name(), clubs.name());
 //        addToCards(cards,black.name(),spades.name());
     }
 

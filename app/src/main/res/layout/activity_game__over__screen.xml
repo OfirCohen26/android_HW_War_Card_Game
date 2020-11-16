@@ -27,11 +27,13 @@
 
     <LinearLayout
         android:id="@+id/main_LAY_TheWinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:orientation="horizontal"
         android:layout_below="@id/main_LAY_GameOver"
+        android:gravity="center_horizontal"
+
         >
         <TextView
             android:id="@+id/main_LBL_theWinner"
