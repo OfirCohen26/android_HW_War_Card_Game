@@ -63,11 +63,6 @@ public class Activity_Main extends AppCompatActivity {
         addClickListeners();
     }
 
-    private void createSound(int source) {
-        mediaPlayer = MediaPlayer.create(this, source);
-        mediaPlayer.start();
-    }
-
     private void playSound(int rawSound) {
         if (mediaPlayer != null) {
             try {
@@ -111,6 +106,7 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                main_BTN_startGame.setEnabled(false);
                 playSound(R.raw.card_game_sound_effect);
                 firstCard = new Card();
                 secondCard = new Card();
@@ -121,7 +117,7 @@ public class Activity_Main extends AppCompatActivity {
                 //Show cards results on screen
                 showCardsAndFindWinnerOfRound(firstCard, secondCard);
                 numOfRounds++;
-                if(numOfRounds >= NUMBER_OF_CARD_DECK) {
+                if(numOfRounds == NUMBER_OF_CARD_DECK){
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -191,8 +187,9 @@ public class Activity_Main extends AppCompatActivity {
             @Override
             public void run() {
                 invertCards();
+                main_BTN_startGame.setEnabled(true);
             }
-        }, 1000);
+        }, 1300);
 
     }
 
