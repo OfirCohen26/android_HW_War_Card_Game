@@ -47,9 +47,9 @@ public class Game_Over_Screen extends AppCompatActivity {
 
    private void newGame(){
        Intent intent = new Intent(this, Activity_Main.class);
-       finish();
        startActivity(intent);
-    }
+       finish();
+   }
 
     private void findViews() {
         gameOver_LBL_theWinner = findViewById(R.id.gameOver_LBL_theWinner);

@@ -68,6 +68,26 @@ public class Activity_Main extends AppCompatActivity {
         mediaPlayer.start();
     }
 
+    private void playSound(int rawSound) {
+        if (mediaPlayer != null) {
+            try {
+                mediaPlayer.reset();
+                mediaPlayer.release();
+            } catch (Exception ex) { }
+        }
+
+        mediaPlayer = MediaPlayer.create(this, rawSound);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mediaPlayer.reset();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+        });
+        mediaPlayer.start();
+    }
+
 
     private void initImage(int imageSource, ImageView imageView) {
         imageView.setImageResource(imageSource);
@@ -91,7 +111,7 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createSound(R.raw.card_game_sound_effect);
+                playSound(R.raw.card_game_sound_effect);
                 firstCard = new Card();
                 secondCard = new Card();
                 firstCard = cards.get(randomCardNumber(cards.size()));
@@ -101,7 +121,7 @@ public class Activity_Main extends AppCompatActivity {
                 //Show cards results on screen
                 showCardsAndFindWinnerOfRound(firstCard, secondCard);
                 numOfRounds++;
-                if(numOfRounds == NUMBER_OF_CARD_DECK) {
+                if(numOfRounds >= NUMBER_OF_CARD_DECK) {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
