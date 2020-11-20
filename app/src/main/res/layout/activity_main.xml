@@ -31,6 +31,17 @@
             android:layout_height="100dp"
             android:adjustViewBounds="true"
             android:src="@drawable/user_boy" />
+
+        <TextView
+            android:id="@+id/main_player1_LBL_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#355A41"
+            android:padding="8dp"
+            android:text="@string/player1Name"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,6 +110,17 @@
             android:maxHeight="100dp"
             android:scaleType="fitCenter"
             android:src="@drawable/user_girl" />
+
+        <TextView
+            android:id="@+id/main_player2_LBL_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#355A41"
+            android:padding="8dp"
+            android:text="@string/player2Name"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
     </LinearLayout>
 </RelativeLayout>

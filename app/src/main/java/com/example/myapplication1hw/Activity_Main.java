@@ -94,17 +94,13 @@ public class Activity_Main extends AppCompatActivity {
                 createSound(R.raw.card_game_sound_effect);
                 firstCard = new Card();
                 secondCard = new Card();
-                Log.d("before card1", "before random size array" + cards.size());
                 firstCard = cards.get(randomCardNumber(cards.size()));
                 cards.remove(firstCard);
-                Log.d("after card 1", "" + cards.size());
                 secondCard = cards.get(randomCardNumber(cards.size()));
                 cards.remove(secondCard);
                 //Show cards results on screen
                 showCardsAndFindWinnerOfRound(firstCard, secondCard);
                 numOfRounds++;
-                Log.d("number of rounds",  " " + numOfRounds);
-                Log.d("NUMBER_OF_CARD_DECK",  " " + NUMBER_OF_CARD_DECK);
                 if(numOfRounds == NUMBER_OF_CARD_DECK) {
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -133,7 +129,7 @@ public class Activity_Main extends AppCompatActivity {
         if (theWinner == 1)
             myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Bob");
         else if (theWinner == 2)
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "khloe");
+            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Khloe");
         else
             myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Draw");
         startActivity(myIntent);
