@@ -1,7 +1,6 @@
 package com.example.myapplication1hw;
 
 public class Card  {
-
     private int value;
     private String color;
     private String shape;

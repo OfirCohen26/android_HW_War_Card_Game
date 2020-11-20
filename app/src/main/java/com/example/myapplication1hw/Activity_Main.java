@@ -26,7 +26,6 @@ public class Activity_Main extends AppCompatActivity {
     final String INVERTED_CARD = "inverted_card";
     private final Random RANDOM = new Random();
 
-
     private TextView main_player1_LBL_result;
     private TextView main_player2_LBL_result;
     private ImageView main_BTN_startGame;
@@ -177,7 +176,6 @@ public class Activity_Main extends AppCompatActivity {
         }, 1000);
 
     }
-
 
     private void findViews() {
         main_player1_LBL_result = findViewById(R.id.main_player1_LBL_result);
