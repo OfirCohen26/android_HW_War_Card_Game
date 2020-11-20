@@ -33,13 +33,15 @@ public class Activity_Main extends AppCompatActivity {
     private ImageView main_IMG_player1_card;
     private ImageView main_IMG_player2_card;
 
+    List<Card> cards;
+    Card firstCard;
+    Card secondCard;
+    private MediaPlayer mediaPlayer;
+
     private int player1Score = 0;
     private int player2Score = 0;
     private int numOfRounds = 0;
     private int theWinner = 0;
-
-    Card firstCard;
-    Card secondCard;
 
     Color red = Color.RED;
     Color black = Color.BLACK;
@@ -47,10 +49,6 @@ public class Activity_Main extends AppCompatActivity {
     Shape heart = Shape.HEART;
     Shape clubs = Shape.CLUBS;
     Shape spades = Shape.SPADES;
-
-    List<Card> cards;
-
-    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +67,7 @@ public class Activity_Main extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, source);
         mediaPlayer.start();
     }
+
 
     private void initImage(int imageSource, ImageView imageView) {
         imageView.setImageResource(imageSource);
@@ -92,24 +91,28 @@ public class Activity_Main extends AppCompatActivity {
         main_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    createSound(R.raw.card_game_sound_effect);
-                    firstCard = new Card();
-                    secondCard = new Card();
-                    firstCard = cards.get(randomCardNumber(cards.size()));
-                    cards.remove(firstCard);
-                    secondCard = cards.get(randomCardNumber(cards.size()));
-                    cards.remove(secondCard);
-                    //Show cards results on screen
-                    showCardsAndFindWinnerOfRound(firstCard, secondCard);
-                    numOfRounds++;
-                    if(numOfRounds == NUMBER_OF_CARD_DECK) {
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                findWinnerOfTheGame();
-                            }
-                        }, 1000);
-                    }
+                createSound(R.raw.card_game_sound_effect);
+                firstCard = new Card();
+                secondCard = new Card();
+                Log.d("before card1", "before random size array" + cards.size());
+                firstCard = cards.get(randomCardNumber(cards.size()));
+                cards.remove(firstCard);
+                Log.d("after card 1", "" + cards.size());
+                secondCard = cards.get(randomCardNumber(cards.size()));
+                cards.remove(secondCard);
+                //Show cards results on screen
+                showCardsAndFindWinnerOfRound(firstCard, secondCard);
+                numOfRounds++;
+                Log.d("number of rounds",  " " + numOfRounds);
+                Log.d("NUMBER_OF_CARD_DECK",  " " + NUMBER_OF_CARD_DECK);
+                if(numOfRounds == NUMBER_OF_CARD_DECK) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            findWinnerOfTheGame();
+                        }
+                    }, 1000);
+                }
             }
         });
     }

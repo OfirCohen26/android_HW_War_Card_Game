@@ -24,7 +24,6 @@ public class Game_Over_Screen extends AppCompatActivity {
         findViews();
         // get the Player that Won
         getInformation();
-
         addClickListeners();
     }
 
