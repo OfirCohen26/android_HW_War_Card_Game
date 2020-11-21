@@ -25,6 +25,7 @@ public class Activity_Main extends AppCompatActivity {
     final int SUIT_SIZE = 13;
     final String INVERTED_CARD = "inverted_card";
     private final Random RANDOM = new Random();
+    private MediaPlayer mediaPlayer;
 
     private TextView main_player1_LBL_result;
     private TextView main_player2_LBL_result;
@@ -33,13 +34,12 @@ public class Activity_Main extends AppCompatActivity {
     private ImageView main_IMG_player1_card;
     private ImageView main_IMG_player2_card;
 
-    List<Card> cards;
-    Card firstCard;
-    Card secondCard;
-    private MediaPlayer mediaPlayer;
+    private List<Card> cards;
+    private Card firstCard;
+    private Card secondCard;
 
-    private int player1Score = 0;
-    private int player2Score = 0;
+    int player1Score = 0;
+    int player2Score = 0;
     private int numOfRounds = 0;
     private int theWinner = 0;
 
