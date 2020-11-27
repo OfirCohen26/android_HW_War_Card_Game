@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Open_Screen"
+    android:background="#355A41"
+    >
+
+    <LinearLayout
+        android:id="@+id/openScreen_LAY_newGame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@id/openScreen_LAY_gameIcon"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/openScreen_BTN_newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#BFBFBF"
+            android:textColor="#7B2405"
+            android:text="@string/newGame"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/openScreen_LAY_gameIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        >
+
+        <ImageView
+            android:id="@+id/openScreen_IMG_VIEW_cardsWar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/cards_war"
+            android:adjustViewBounds="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/openScreen_LAY_top10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_toRightOf="@id/openScreen_LAY_gameIcon"
+        >
+
+        <Button
+            android:id="@+id/openScreen_BTN_Top10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#BFBFBF"
+            android:textColor="#7B2405"
+            android:padding="5dp"
+            android:text="@string/top_10_button"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

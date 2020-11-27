@@ -39,7 +39,7 @@
             android:layout_gravity="center"
             android:background="#355A41"
             android:padding="8dp"
-            android:text="@string/player1Name"
+            android:text="@string/player1_name"
             android:textColor="@color/black"
             android:textSize="30sp" />
     </LinearLayout>
@@ -118,7 +118,7 @@
             android:layout_gravity="center"
             android:background="#355A41"
             android:padding="8dp"
-            android:text="@string/player2Name"
+            android:text="@string/player2_name"
             android:textColor="@color/black"
             android:textSize="30sp" />
 

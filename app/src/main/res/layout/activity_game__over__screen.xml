@@ -17,7 +17,7 @@
         >
 
         <ImageView
-            android:id="@+id/gameOver_IMG_VIEW_player1_card"
+            android:id="@+id/gameOver_IMG_VIEW_gameOver"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/game_over"

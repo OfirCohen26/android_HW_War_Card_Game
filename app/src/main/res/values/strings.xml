@@ -4,8 +4,11 @@
     <string name="result_second_player">0</string>
     <string name="winner">The Winner is - </string>
     <string name="newGame">NEW GAME</string>
-    <string name="player1Name">Bob</string>
-    <string name="player2Name">Khloe</string>
+    <string name="player1_name">Bob</string>
+    <string name="player2_name">Khloe</string>
+    <string name="start_game_button">START GAME</string>
+    <string name="top_10_button">TOP 10</string>
+
 
 
 
