@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Game_Over_Screen extends AppCompatActivity {
+public class Game_Over_Screen extends Activity_Base {
 
     //Setting variables
     private String winner;

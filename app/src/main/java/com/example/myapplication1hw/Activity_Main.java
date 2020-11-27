@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Activity_Main extends AppCompatActivity {
+public class Activity_Main extends Activity_Base {
 
     //Setting variables
     final String FOLDER = "com.example.myapplication1hw";

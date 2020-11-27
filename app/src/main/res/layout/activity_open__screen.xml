@@ -9,23 +9,24 @@
     >
 
     <LinearLayout
-        android:id="@+id/openScreen_LAY_newGame"
-        android:layout_width="match_parent"
+        android:id="@+id/openScreen_LAY_startGame"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_toLeftOf="@id/openScreen_LAY_gameIcon"
         android:gravity="center"
+        android:layout_toStartOf="@id/openScreen_LAY_gameIcon"
+
         >
 
         <Button
-            android:id="@+id/openScreen_BTN_newGame"
-            android:layout_width="wrap_content"
+            android:id="@+id/openScreen_BTN_startGame"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#BFBFBF"
             android:textColor="#7B2405"
-            android:text="@string/newGame"
-            android:padding="5dp"
-            />
+            android:text="@string/start_game_button"
+
+            android:padding="5dp" />
 
     </LinearLayout>
 
@@ -46,24 +47,29 @@
             />
     </LinearLayout>
 
+
+
+
     <LinearLayout
         android:id="@+id/openScreen_LAY_top10"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        android:layout_toRightOf="@id/openScreen_LAY_gameIcon"
+        android:orientation="vertical"
+        android:layout_toEndOf="@id/openScreen_LAY_gameIcon"
         >
 
         <Button
             android:id="@+id/openScreen_BTN_Top10"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#BFBFBF"
-            android:textColor="#7B2405"
             android:padding="5dp"
+            android:scaleType="fitXY"
             android:text="@string/top_10_button"
-            />
+            android:textColor="#7B2405" />
+
+
     </LinearLayout>
 
 </RelativeLayout>
