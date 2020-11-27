@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Top_Ten_Screen extends AppCompatActivity {
+public class Top_Ten_Screen extends Activity_Base {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
