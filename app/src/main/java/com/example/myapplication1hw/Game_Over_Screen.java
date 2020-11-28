@@ -39,14 +39,14 @@ public class Game_Over_Screen extends Activity_Base {
         gameOver_BTN_newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newGame();
+                backToMenu();
             }
         });
     }
 
 
-   private void newGame(){
-       Intent intent = new Intent(this, Activity_Main.class);
+   private void backToMenu(){
+       Intent intent = new Intent(this, Open_Screen.class);
        startActivity(intent);
        finish();
    }

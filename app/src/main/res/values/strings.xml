@@ -8,6 +8,8 @@
     <string name="player2_name">Khloe</string>
     <string name="start_game_button">START GAME</string>
     <string name="top_10_button">TOP 10</string>
+    <string name="back_to_menu">Back to menu</string>
+
 
 
 </resources>

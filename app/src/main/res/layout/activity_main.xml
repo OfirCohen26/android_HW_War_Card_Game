@@ -52,6 +52,15 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/main_PGB_lifeOfFirstPlayer"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:progress="100"
+            />
+
         <LinearLayout
             android:id="@+id/main_LAY_cards_container"
             android:layout_width="wrap_content"
@@ -79,7 +88,7 @@
             android:maxWidth="80dp"
             android:maxHeight="80dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/video_player" />
+            android:src="@drawable/clock" />
     </LinearLayout>
 
     <LinearLayout

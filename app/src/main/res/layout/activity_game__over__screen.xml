@@ -47,7 +47,7 @@
             android:background="#355A41"
             android:textColor="#FF5722"
             android:textSize="20sp"
-            android:text="@string/newGame" />
+            android:text="@string/back_to_menu" />
 
         <ImageView
             android:id="@+id/gameOver_BTN_newGame"
@@ -55,7 +55,7 @@
             android:layout_height="40dp"
             android:maxWidth="40dp"
             android:maxHeight="40dp"
-            android:src="@drawable/video_player"/>
+            android:src="@drawable/back"/>
 
         </LinearLayout>
 
