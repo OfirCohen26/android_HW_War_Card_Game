@@ -32,7 +32,6 @@ public class Open_Screen extends Activity_Base {
         checkIfGPSOn();
     }
 
-
     private void addClickListeners() {
         openScreen_BTN_startGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +57,6 @@ public class Open_Screen extends Activity_Base {
         Intent intent = new Intent(Open_Screen.this, Top_Ten_Screen.class);
         startActivity(intent);
     }
-
 
     private void checkIfGPSOn() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
