@@ -14,7 +14,7 @@ public class Game_Over_Screen extends Activity_Base {
     private String winner;
     public static final String EXTRA_KEY_WINNER = "EXTRA_KEY_WINNER";
     private TextView gameOver_LBL_theWinner;
-    private ImageView gameOver_BTN_newGame;
+    private ImageView gameOver_BTN_back;
 
 
     @Override
@@ -36,7 +36,7 @@ public class Game_Over_Screen extends Activity_Base {
     }
 
     private void addClickListeners() {
-        gameOver_BTN_newGame.setOnClickListener(new View.OnClickListener() {
+        gameOver_BTN_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backToMenu();
@@ -53,6 +53,6 @@ public class Game_Over_Screen extends Activity_Base {
 
     private void findViews() {
         gameOver_LBL_theWinner = findViewById(R.id.gameOver_LBL_theWinner);
-        gameOver_BTN_newGame = findViewById(R.id.gameOver_BTN_newGame);
+        gameOver_BTN_back = findViewById(R.id.gameOver_BTN_back);
     }
 }
