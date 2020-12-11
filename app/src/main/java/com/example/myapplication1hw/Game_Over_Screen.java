@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,11 +23,11 @@ import com.google.android.gms.tasks.Task;
 public class Game_Over_Screen extends Activity_Base {
 
     //Setting variables
-//    private String winner;
     public static final String EXTRA_KEY_WINNER = "EXTRA_KEY_WINNER";
     private TextView gameOver_LBL_Score;
     private ImageView gameOver_BTN_OK;
     private EditText gameOver_EDT_userName;
+    private ImageView gameOver_IMG_VIEW_gameOver;
 
     private Player_Info player;
     Location currentLocation;
@@ -37,8 +38,10 @@ public class Game_Over_Screen extends Activity_Base {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game__over__screen);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(Game_Over_Screen.this);
-
         findViews();
+        Glide.with(this).load(getResources()
+                .getIdentifier("game_over", "drawable","com.example.myapplication1hw"))
+                .into(gameOver_IMG_VIEW_gameOver);
         getWinnerInformation();
         getLocation();
         addClickListeners();
@@ -98,6 +101,7 @@ public class Game_Over_Screen extends Activity_Base {
         gameOver_LBL_Score = findViewById(R.id.gameOver_LBL_Score);
         gameOver_BTN_OK = findViewById(R.id.gameOver_BTN_OK);
         gameOver_EDT_userName = findViewById(R.id.gameOver_EDT_userName);
+        gameOver_IMG_VIEW_gameOver = findViewById(R.id.gameOver_IMG_VIEW_gameOver);
     }
 
     private void handleHighScore() {

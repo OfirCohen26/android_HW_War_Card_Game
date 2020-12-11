@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 public class Top_Ten_Screen extends Activity_Base implements Fragment_High_Score_List{
-
     private ImageView top10_IMG_back;
     private Fragment_Map fragmentMap;
     private Fragment_List fragmentList;

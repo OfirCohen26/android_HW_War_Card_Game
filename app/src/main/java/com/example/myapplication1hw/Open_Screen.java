@@ -16,7 +16,6 @@ import android.Manifest;
 import androidx.core.app.ActivityCompat;
 
 public class Open_Screen extends Activity_Base {
-
     private Button openScreen_BTN_startGame;
     private Button openScreen_BTN_Top10;
     private MediaPlayer mediaPlayer;

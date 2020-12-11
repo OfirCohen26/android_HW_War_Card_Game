@@ -17,7 +17,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
-
     private GoogleMap gMap;
     private View rootView;
     private double dLatitude;
@@ -68,7 +67,6 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM));
         gMap.addMarker(markerOptions);
     }
-
 
     //Get location information from player and display it
     public void getPlayerLocation(Player_Info player) {

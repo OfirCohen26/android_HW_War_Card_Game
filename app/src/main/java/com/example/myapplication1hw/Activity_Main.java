@@ -12,29 +12,20 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.media.MediaPlayer;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Activity_Main extends Activity_Base {
-
-    //Setting variables
-    final String FOLDER = "com.example.myapplication1hw";
-    final String TYPE = "drawable";
-    final int NUMBER_OF_CARD_DECK = 26;
-    final int SUIT_SIZE = 13;
-    final String INVERTED_CARD = "inverted_card";
+public class Activity_Main extends Activity_Base implements Variables {
     private final Random RANDOM = new Random();
-//    final String KHLOE = "Khloe";
-//    final String BOB = "Bob";
-    final String Draw = "Draw";
 
     private MediaPlayer mediaPlayer;
     private Timer time;
     private boolean firstGame = true;
-
 
     private TextView main_player1_LBL_result;
     private TextView main_player2_LBL_result;
@@ -52,7 +43,6 @@ public class Activity_Main extends Activity_Base {
     int player1Score = 0;
     int player2Score = 0;
     private int numOfRounds = 0;
-    private int theWinner = 0;
 
     Color red = Color.RED;
     Color black = Color.BLACK;
@@ -60,10 +50,6 @@ public class Activity_Main extends Activity_Base {
     Shape heart = Shape.HEART;
     Shape clubs = Shape.CLUBS;
     Shape spades = Shape.SPADES;
-
-    int progressValue = 100;
-    private String winner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +59,8 @@ public class Activity_Main extends Activity_Base {
         time = new Timer();
         player = new Player_Info();
         findViews();
-        initImage(R.drawable.inverted_card, main_IMG_player1_card);
-        initImage(R.drawable.inverted_card, main_IMG_player2_card);
+        setImage(R.drawable.inverted_card, main_IMG_player1_card);
+        setImage(R.drawable.inverted_card, main_IMG_player2_card);
         createListOfCards();
         progressBarColor();
         new Handler().postDelayed(new Runnable() {
@@ -84,7 +70,7 @@ public class Activity_Main extends Activity_Base {
                 playWithTimer(time);
 
             }
-        }, 1000);
+        }, DELAY);
     }
 
     private void playWithTimer(Timer timer) {
@@ -97,7 +83,6 @@ public class Activity_Main extends Activity_Base {
                     public void run() {
                         progressBarAnimation();
                         firstGame = false;
-                        //        main_BTN_startGame.setEnabled(false);
                         playSound(R.raw.card_game_sound_effect);
                         firstCard = new Card();
                         secondCard = new Card();
@@ -105,26 +90,21 @@ public class Activity_Main extends Activity_Base {
                         cards.remove(firstCard);
                         secondCard = cards.get(randomCardNumber(cards.size()));
                         cards.remove(secondCard);
-//                        main_PGB_lifeOfFirstPlayer.setProgress(progressValue - 20);
-//                        progressValue = 100;
-                        //Show cards results on screen
                         showCardsAndFindWinnerOfRound(firstCard, secondCard);
                         numOfRounds++;
-//                        progressValue=100;
-//                        main_PGB_lifeOfFirstPlayer.setProgress(progressValue);
-                        if(numOfRounds == 3){
+                        if(numOfRounds == NUMBER_OF_CARD_DECK){
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
                                     time.cancel();
                                     findWinnerOfTheGame();
                                 }
-                             }, 1000);
+                             }, DELAY);
                         }
                     }
                 });
             }
-        }, 0, 5000);
+        }, ZERO, PERIOD);
     }
 
 
@@ -135,16 +115,16 @@ public class Activity_Main extends Activity_Base {
     }
 
     private void progressBarAnimation(){
-        ObjectAnimator animation = ObjectAnimator.ofInt(main_PGB_lifeOfFirstPlayer, "progress", 100, 0);
-        animation.setDuration(4000); // 3.5 second
+        ObjectAnimator animation = ObjectAnimator.ofInt(main_PGB_lifeOfFirstPlayer, "progress", PROGRESS_VALUE, ZERO);
+        animation.setDuration(DURATION);
         animation.setInterpolator(new DecelerateInterpolator());
         animation.start();
     }
 
     private void invertCards() {
         int CardImage = getResources().getIdentifier(INVERTED_CARD, TYPE, FOLDER);
-        main_IMG_player1_card.setImageResource(CardImage);
-        main_IMG_player2_card.setImageResource(CardImage);
+        setImage(CardImage,main_IMG_player1_card);
+        setImage(CardImage,main_IMG_player2_card);
     }
 
     private int randomCardNumber(int num) {
@@ -153,36 +133,20 @@ public class Activity_Main extends Activity_Base {
 
     //Send the Winner to Game_Over_Screen
     private void openGameOverScreen() {
-//        Intent myIntent = new Intent(Activity_Main.this, Game_Over_Screen.class);
-//        if (theWinner == 1)
-//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, BOB);
-//        else if (theWinner == 2)
-//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, KHLOE);
-//        else
-//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, Draw);
-//        startActivity(myIntent);
-//        finish();
-
         setDefaultLocation();
         Intent intent = new Intent(this, Game_Over_Screen.class);
         intent.putExtra("player", player);
-//        intent.putExtra("winner", winner);
         startActivity(intent);
         finish();
     }
     // find the Winner Of The game
     private void findWinnerOfTheGame() {
         if (player1Score > player2Score) {
-//            theWinner = 1;
-//            winner = BOB; // player 1 won
             player.setScore(player1Score);
         }
         else {
-//            theWinner = 2;
-//            winner = KHLOE; // player 2 won
             player.setScore(player2Score);
         }
-//        else theWinner = 0; // draw
         openGameOverScreen(); // send the Winner
     }
 
@@ -193,11 +157,6 @@ public class Activity_Main extends Activity_Base {
         } else if (card1.getValue() < card2.getValue()) {
             player2Score++;
         }
-        // V2 changes - if draw NO player gets a point
-//        else {
-//                player1Score++;
-//            player2Score++;
-//        }
         main_player1_LBL_result.setText("" + player1Score);
         main_player2_LBL_result.setText("" + player2Score);
     }
@@ -205,9 +164,9 @@ public class Activity_Main extends Activity_Base {
     // Show selected Card the find the winner of the round
     private void showCardsAndFindWinnerOfRound(final Card card1, final Card card2) {
         int firstCardImage = getResources().getIdentifier(card1.getShape().toLowerCase() + "_" + card1.getColor().toLowerCase() + "_" + card1.getValue(), TYPE, FOLDER);
-        main_IMG_player1_card.setImageResource(firstCardImage);
+        setImage(firstCardImage,main_IMG_player1_card);
         int secondCardImage = getResources().getIdentifier(card2.getShape().toLowerCase() + "_" + card2.getColor().toLowerCase() + "_" + card2.getValue(), TYPE, FOLDER);
-        main_IMG_player2_card.setImageResource(secondCardImage);
+        setImage(secondCardImage,main_IMG_player2_card);
         checkRoundWinnerCard(firstCard, secondCard);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -215,7 +174,7 @@ public class Activity_Main extends Activity_Base {
                 invertCards();
 //                main_BTN_startGame.setEnabled(true);
             }
-        }, 1000);
+        }, DELAY);
 
     }
 
@@ -239,10 +198,12 @@ public class Activity_Main extends Activity_Base {
         mediaPlayer.start();
     }
 
-    private void initImage(int imageSource, ImageView imageView) {
-        imageView.setImageResource(imageSource);
+    public void setImage(int id,ImageView imageView) {
+        Glide
+                .with(this)
+                .load(id)
+                .into(imageView);
     }
-
     private void createListOfCards() {
         addToCards(cards, red.name(), diamond.name());
         addToCards(cards, red.name(), heart.name());
@@ -284,8 +245,8 @@ public class Activity_Main extends Activity_Base {
 
 
     private void setDefaultLocation() {
-        player.setLat(32.113490);
-        player.setLon(34.817853);
+        player.setLat(45.833398902478265);
+        player.setLon(6.865132016610975);
     }
 
 

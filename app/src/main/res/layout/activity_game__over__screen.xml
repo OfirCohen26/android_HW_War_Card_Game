@@ -20,7 +20,6 @@
             android:id="@+id/gameOver_IMG_VIEW_gameOver"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:src="@drawable/game_over"
             />
     </LinearLayout>
 
@@ -45,7 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:gravity="center"
-            android:hint="@string/player_name" />
+            android:hint="@string/player_name"
+            android:textColorHint="#ECE5E4"
+            android:backgroundTint="#E3EBEF"
+            android:textColor="#DF1526"
+            />
 
         <ImageView
             android:id="@+id/gameOver_BTN_OK"

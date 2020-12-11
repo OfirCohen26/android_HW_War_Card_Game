@@ -7,10 +7,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class High_Score {
+public class High_Score implements Variables {
     private ArrayList<Player_Info> allPlayersInfo;
-    final int NOT_FOUND = -1;
-    final int MAX_SIZE = 10;
 
     public High_Score() {
     }

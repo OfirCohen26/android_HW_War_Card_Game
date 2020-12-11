@@ -44,5 +44,8 @@ dependencies {
     // Recyclerview (Display large sets of data in your UI while minimizing memory usage)
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'androidx.cardview:cardview:1.0.0'
+    // Glide (image loading framework)
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 }
