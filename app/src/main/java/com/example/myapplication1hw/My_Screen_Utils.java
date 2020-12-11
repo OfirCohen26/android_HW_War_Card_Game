@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-public class MyScreenUtils {
+public class My_Screen_Utils {
     public static void hideSystemUI(AppCompatActivity activity) {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.

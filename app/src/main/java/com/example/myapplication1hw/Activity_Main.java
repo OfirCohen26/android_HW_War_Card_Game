@@ -1,14 +1,9 @@
 package com.example.myapplication1hw;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.ObjectAnimator;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,6 +27,10 @@ public class Activity_Main extends Activity_Base {
     final int SUIT_SIZE = 13;
     final String INVERTED_CARD = "inverted_card";
     private final Random RANDOM = new Random();
+//    final String KHLOE = "Khloe";
+//    final String BOB = "Bob";
+    final String Draw = "Draw";
+
     private MediaPlayer mediaPlayer;
     private Timer time;
     private boolean firstGame = true;
@@ -48,6 +47,7 @@ public class Activity_Main extends Activity_Base {
     private List<Card> cards;
     private Card firstCard;
     private Card secondCard;
+    private Player_Info player;
 
     int player1Score = 0;
     int player2Score = 0;
@@ -62,6 +62,8 @@ public class Activity_Main extends Activity_Base {
     Shape spades = Shape.SPADES;
 
     int progressValue = 100;
+    private String winner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class Activity_Main extends Activity_Base {
         setContentView(R.layout.activity_main);
         cards = new ArrayList<Card>();
         time = new Timer();
+        player = new Player_Info();
         findViews();
         initImage(R.drawable.inverted_card, main_IMG_player1_card);
         initImage(R.drawable.inverted_card, main_IMG_player2_card);
@@ -109,7 +112,7 @@ public class Activity_Main extends Activity_Base {
                         numOfRounds++;
 //                        progressValue=100;
 //                        main_PGB_lifeOfFirstPlayer.setProgress(progressValue);
-                        if(numOfRounds == 4){
+                        if(numOfRounds == 3){
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -150,23 +153,36 @@ public class Activity_Main extends Activity_Base {
 
     //Send the Winner to Game_Over_Screen
     private void openGameOverScreen() {
-        Intent myIntent = new Intent(Activity_Main.this, Game_Over_Screen.class);
-        if (theWinner == 1)
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Bob");
-        else if (theWinner == 2)
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Khloe");
-        else
-            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, "Draw");
-        startActivity(myIntent);
+//        Intent myIntent = new Intent(Activity_Main.this, Game_Over_Screen.class);
+//        if (theWinner == 1)
+//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, BOB);
+//        else if (theWinner == 2)
+//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, KHLOE);
+//        else
+//            myIntent.putExtra(Game_Over_Screen.EXTRA_KEY_WINNER, Draw);
+//        startActivity(myIntent);
+//        finish();
+
+        setDefaultLocation();
+        Intent intent = new Intent(this, Game_Over_Screen.class);
+        intent.putExtra("player", player);
+//        intent.putExtra("winner", winner);
+        startActivity(intent);
         finish();
     }
     // find the Winner Of The game
     private void findWinnerOfTheGame() {
-        if (player1Score > player2Score)
-            theWinner = 1; // player 1 won
-        else if (player1Score < player2Score)
-            theWinner = 2; // player 2 won
-        else theWinner = 0; // draw
+        if (player1Score > player2Score) {
+//            theWinner = 1;
+//            winner = BOB; // player 1 won
+            player.setScore(player1Score);
+        }
+        else {
+//            theWinner = 2;
+//            winner = KHLOE; // player 2 won
+            player.setScore(player2Score);
+        }
+//        else theWinner = 0; // draw
         openGameOverScreen(); // send the Winner
     }
 
@@ -176,10 +192,12 @@ public class Activity_Main extends Activity_Base {
             player1Score++;
         } else if (card1.getValue() < card2.getValue()) {
             player2Score++;
-        } else {
-            player1Score++;
-            player2Score++;
         }
+        // V2 changes - if draw NO player gets a point
+//        else {
+//                player1Score++;
+//            player2Score++;
+//        }
         main_player1_LBL_result.setText("" + player1Score);
         main_player2_LBL_result.setText("" + player2Score);
     }
@@ -262,6 +280,12 @@ public class Activity_Main extends Activity_Base {
     protected void onStop() {
         super.onStop();
         time.cancel();
+    }
+
+
+    private void setDefaultLocation() {
+        player.setLat(32.113490);
+        player.setLon(34.817853);
     }
 
 

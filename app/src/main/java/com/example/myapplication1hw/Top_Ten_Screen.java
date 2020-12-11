@@ -1,7 +1,5 @@
 package com.example.myapplication1hw;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,7 +7,7 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-public class Top_Ten_Screen extends Activity_Base {
+public class Top_Ten_Screen extends Activity_Base implements Fragment_High_Score_List{
 
     private ImageView top10_IMG_back;
     private Fragment_Map fragmentMap;
@@ -31,8 +29,8 @@ public class Top_Ten_Screen extends Activity_Base {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(R.id.top10_LAY_list, fragmentList);
         fragmentTransaction.add(R.id.top10_LAY_map, fragmentMap);
-//        fragmentTransaction.add(R.id.top10_LAY_list, fragmentList);
         fragmentTransaction.commit();
     }
 
@@ -51,6 +49,11 @@ public class Top_Ten_Screen extends Activity_Base {
 
     private void backToMenu() {
         finish();
+    }
+
+    @Override
+    public void onSentPlayerInfo(Player_Info player) {
+        fragmentMap.getPlayerLocation(player);
     }
 }
 

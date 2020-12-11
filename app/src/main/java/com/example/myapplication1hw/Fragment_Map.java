@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,10 +22,13 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
     private View rootView;
     private double dLatitude;
     private double dLongtitude;
+    private String name;
+
+    private High_Score highScore;
+    private int index;
 
     public static Fragment_Map newInstance() {
         Log.d("newInstance", "newInstance");
-
         Fragment_Map fragment = new Fragment_Map();
         return fragment;
     }
@@ -38,6 +42,7 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("dddd", "onCreateView");
+        highScore = new High_Score();
 
         // Initialize view
         if(rootView==null) {
@@ -47,6 +52,7 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
         SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_LAY_map);
 
         // Async map
+
         supportMapFragment.getMapAsync(this);
 
         return rootView;
@@ -61,6 +67,14 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
         gMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM));
         gMap.addMarker(markerOptions);
+    }
+
+
+    //Get location information from player and display it
+    public void getPlayerLocation(Player_Info player) {
+        dLatitude = player.getLat();
+        dLongtitude = player.getLon();
+        onMapReady(gMap);
     }
 }
 

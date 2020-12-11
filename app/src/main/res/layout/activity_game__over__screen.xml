@@ -15,14 +15,6 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         >
-        <ImageView
-            android:id="@+id/gameOver_BTN_back"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="15dp"
-            android:src="@drawable/back"/>
 
         <ImageView
             android:id="@+id/gameOver_IMG_VIEW_gameOver"
@@ -37,12 +29,35 @@
         android:id="@+id/gameOver_LAY_TheWinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_below="@id/gameOver_LAY_GameOver"
         android:layout_centerHorizontal="true">
 
+    <LinearLayout
+        android:id="@+id/gameOver_LAY_PlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/gameOver_EDT_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:hint="@string/player_name" />
+
+        <ImageView
+            android:id="@+id/gameOver_BTN_OK"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ok"/>
+
+    </LinearLayout>
+
         <TextView
-            android:id="@+id/gameOver_LBL_theWinner"
+            android:id="@+id/gameOver_LBL_Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:shadowColor="#040D43"
@@ -50,7 +65,7 @@
             android:shadowDy="13"
             android:shadowRadius="2"
             android:textColor="#DF1526"
-            android:textSize="60sp"
+            android:textSize="40sp"
             android:typeface="serif"
             />
     </LinearLayout>

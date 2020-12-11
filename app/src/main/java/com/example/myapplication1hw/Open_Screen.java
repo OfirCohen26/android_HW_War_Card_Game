@@ -28,6 +28,7 @@ public class Open_Screen extends Activity_Base {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open__screen);
         findViews();
+        playSound();
         addClickListeners();
         checkIfGPSOn();
     }
@@ -95,26 +96,27 @@ public class Open_Screen extends Activity_Base {
         alert.show();
     }
 
+
     private void findViews() {
         openScreen_BTN_startGame = findViewById(R.id.openScreen_BTN_startGame);
         openScreen_BTN_Top10 =  findViewById(R.id.openScreen_BTN_Top10);
     }
+    @Override
+    protected void onPause() {
+        mediaPlayer.pause();
+        super.onPause();
+    }
 
-//    private void playSound() {
-////        mediaPlayer = MediaPlayer.create(this, R.raw.hlicopter);
-//        mediaPlayer.setLooping(true);
-//    }
+    @Override
+    protected void onResume() {
+        mediaPlayer.start();
+        super.onResume();
+    }
 
-//    @Override
-//    protected void onPause() {
-//        mediaPlayer.pause();
-//        super.onPause();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-////        mediaPlayer.start();
-//        super.onResume();
-//    }
+    private void playSound() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.waterphone);
+        mediaPlayer.setLooping(true);
+    }
+
 
 }
