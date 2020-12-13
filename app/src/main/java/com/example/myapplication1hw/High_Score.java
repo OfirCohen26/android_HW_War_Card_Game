@@ -60,14 +60,12 @@ public class High_Score implements Variables {
 
 
     public int findIndexToInsert(Player_Info newPlayerInfo, ArrayList<Player_Info> playersInfo) {
-        for (int index = 0; index < playersInfo.size() ; index++) {
-            if(newPlayerInfo.compareTo(playersInfo.get(index)) >= 0){
+        for (int index = 0; index < playersInfo.size(); index++) {
+            if (newPlayerInfo.compareTo(playersInfo.get(index)) >= 0) {
                 return index;
             }
         }
         return NOT_FOUND;
     }
-
-
 }
 

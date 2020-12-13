@@ -26,7 +26,7 @@ public class Game_Over_Screen extends Activity_Base {
     public static final String EXTRA_KEY_WINNER = "EXTRA_KEY_WINNER";
     private TextView gameOver_LBL_Score;
     private ImageView gameOver_BTN_OK;
-    private EditText gameOver_EDT_userName;
+    private EditText gameOver_EDT_playerName;
     private ImageView gameOver_IMG_VIEW_gameOver;
 
     private Player_Info player;
@@ -79,18 +79,18 @@ public class Game_Over_Screen extends Activity_Base {
         gameOver_BTN_OK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMenu();
+                confirmNameAndBackToMenu();
             }
         });
     }
 
 
-   private void backToMenu(){
-       String name = gameOver_EDT_userName.getText().toString();
-       if (name.equals("") || name.isEmpty()) {
-           name = "Player";
+   private void confirmNameAndBackToMenu(){
+       String playerName = gameOver_EDT_playerName.getText().toString();
+       if (playerName.equals("") || playerName.isEmpty()) {
+           playerName = "Player";
        }
-       player.setName(name);
+       player.setName(playerName);
        handleHighScore();
        Intent intent = new Intent(this, Open_Screen.class);
        startActivity(intent);
@@ -100,7 +100,7 @@ public class Game_Over_Screen extends Activity_Base {
     private void findViews() {
         gameOver_LBL_Score = findViewById(R.id.gameOver_LBL_Score);
         gameOver_BTN_OK = findViewById(R.id.gameOver_BTN_OK);
-        gameOver_EDT_userName = findViewById(R.id.gameOver_EDT_userName);
+        gameOver_EDT_playerName = findViewById(R.id.gameOver_EDT_playerName);
         gameOver_IMG_VIEW_gameOver = findViewById(R.id.gameOver_IMG_VIEW_gameOver);
     }
 

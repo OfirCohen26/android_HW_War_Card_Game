@@ -39,7 +39,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/gameOver_EDT_userName"
+            android:id="@+id/gameOver_EDT_playerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
