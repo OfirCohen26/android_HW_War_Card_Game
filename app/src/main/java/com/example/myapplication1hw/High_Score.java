@@ -10,8 +10,7 @@ import java.util.Collections;
 public class High_Score implements Variables {
     private ArrayList<Player_Info> allPlayersInfo;
 
-    public High_Score() {
-    }
+    public High_Score() { }
 
     public ArrayList<Player_Info> getAllPlayersInfo() {
         return allPlayersInfo;
