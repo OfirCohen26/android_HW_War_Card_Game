@@ -13,9 +13,10 @@ import android.media.MediaPlayer;
 import android.location.LocationManager;
 import android.Manifest;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class Open_Screen extends Activity_Base {
+public class Open_Screen extends AppCompatActivity {
     private Button openScreen_BTN_startGame;
     private Button openScreen_BTN_Top10;
     private MediaPlayer mediaPlayer;
