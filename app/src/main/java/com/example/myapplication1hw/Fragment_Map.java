@@ -27,7 +27,6 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
     private int index;
 
     public static Fragment_Map newInstance() {
-        Log.d("newInstance", "newInstance");
         Fragment_Map fragment = new Fragment_Map();
         return fragment;
     }
@@ -51,7 +50,6 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
         SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_LAY_map);
 
         // Async map
-
         supportMapFragment.getMapAsync(this);
 
         return rootView;
@@ -68,7 +66,6 @@ public class Fragment_Map  extends Fragment implements OnMapReadyCallback {
         gMap.addMarker(markerOptions);
     }
 
-    //Get location information from player and display it
     public void getPlayerLocation(Player_Info player) {
         dLatitude = player.getLat();
         dLongtitude = player.getLon();

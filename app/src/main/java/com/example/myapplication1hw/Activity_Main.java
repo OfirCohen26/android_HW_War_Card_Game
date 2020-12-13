@@ -68,11 +68,11 @@ public class Activity_Main extends Activity_Base implements Variables {
             public void run() {
                 //Start the game
                 playWithTimer(time);
-
             }
         }, DELAY);
     }
 
+    // Play the game with timer
     private void playWithTimer(Timer timer) {
         //Use timer to play the game
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -106,7 +106,6 @@ public class Activity_Main extends Activity_Base implements Variables {
             }
         }, ZERO, PERIOD);
     }
-
 
     private void progressBarColor(){
         Drawable progressDrawable = main_PGB_lifeOfFirstPlayer.getProgressDrawable().mutate();
@@ -204,11 +203,12 @@ public class Activity_Main extends Activity_Base implements Variables {
                 .load(id)
                 .into(imageView);
     }
+
     private void createListOfCards() {
         addToCards(cards, red.name(), diamond.name());
         addToCards(cards, red.name(), heart.name());
         addToCards(cards, black.name(), clubs.name());
-        addToCards(cards,black.name(),spades.name());
+        addToCards(cards, black.name(), spades.name());
     }
 
     private void addToCards(List<Card> cards, String color, String shape) {
@@ -243,12 +243,10 @@ public class Activity_Main extends Activity_Base implements Variables {
         time.cancel();
     }
 
-
     private void setDefaultLocation() {
         player.setLat(45.833398902478265);
         player.setLon(6.865132016610975);
     }
-
 
     //    private void addClickListeners() {
 //        main_BTN_startGame.setOnClickListener(new View.OnClickListener() {

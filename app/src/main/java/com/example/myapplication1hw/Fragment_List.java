@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Fragment_List extends Fragment{
+public class Fragment_List extends Fragment implements Variables{
 
     private View rootView;
     private Recycler_Adapter adapter;
@@ -49,10 +49,10 @@ public class Fragment_List extends Fragment{
         //Create recycle view for player in top
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        if (players.size() <= highScore.MAX_SIZE) {
+        if (players.size() <= MAX_SIZE) {
             adapter = new Recycler_Adapter(players);
         }
-        if (players.size() >= highScore.MAX_SIZE) {
+        if (players.size() >= MAX_SIZE) {
             adapter = new Recycler_Adapter(new ArrayList<Player_Info>(players.subList(0, 10)));
         }
 
